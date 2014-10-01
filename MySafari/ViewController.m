@@ -79,22 +79,21 @@
     self.navigationTitle.title = urlTitleString;
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    CGPoint translation = [scrollView.panGestureRecognizer translationInView:scrollView.superview];
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+ CGPoint translation = [scrollView.panGestureRecognizer translationInView:scrollView.superview];
     
-    if(translation.y > 0)
-    {
-        self.urlTextField.alpha = 1;
+ if(translation.y > 0) {
+     [UIScrollView animateWithDuration:0.1 animations:^{self.urlTextField.alpha = 1.0;}];
         NSLog(@"Down %f", translation.y);
-    }
-    
-    if(translation.y < 0)
-    {
-        self.urlTextField.alpha = 0;
+ }
+ else if (translation.y < 0) {
+     [UIScrollView animateWithDuration:0.1 animations:^{self.urlTextField.alpha = 0.0;}];
         NSLog(@"Up %f", translation.y);
     }
 }
+
+
 
 - (IBAction)onStopLoadingButtonPressed:(id)sender {
     [self.webView stopLoading];
