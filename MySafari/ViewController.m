@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIAlertViewDelegate, UIScrollViewDelegate>
 @property IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.webView.scrollView.delegate = self;
 }
 
 - (IBAction)onBackButtonPressed:(id)sender {
@@ -75,9 +75,12 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     self.urlTextField.text = self.webView.request.URL.absoluteString;
-    NSString *urlTitleString = [webView stringByEvaluatingJavaScriptFromString:@"docment.title"];
+    NSString *urlTitleString = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.navigationTitle.title = urlTitleString;
-    
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.urlTextField isHidden];
 }
 
 - (IBAction)onStopLoadingButtonPressed:(id)sender {
