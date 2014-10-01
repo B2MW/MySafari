@@ -79,8 +79,21 @@
     self.navigationTitle.title = urlTitleString;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.urlTextField isHidden];
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    CGPoint translation = [scrollView.panGestureRecognizer translationInView:scrollView.superview];
+    
+    if(translation.y > 0)
+    {
+        self.urlTextField.alpha = 1;
+        NSLog(@"Down %f", translation.y);
+    }
+    
+    if(translation.y < 0)
+    {
+        self.urlTextField.alpha = 0;
+        NSLog(@"Up %f", translation.y);
+    }
 }
 
 - (IBAction)onStopLoadingButtonPressed:(id)sender {
