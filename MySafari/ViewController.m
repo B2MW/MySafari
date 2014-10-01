@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *forwardButton;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 
 @end
 
@@ -46,6 +47,7 @@
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -54,8 +56,7 @@
         NSString *firstHalfOfURL = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSString *http = @"http://";
         self.urlTextField.text = [http stringByAppendingString:firstHalfOfURL];
-    }
-
+    }   
     [self loadPage:self.urlTextField.text];
     return YES;
 }
@@ -74,6 +75,9 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     self.urlTextField.text = self.webView.request.URL.absoluteString;
+    NSString *urlTitleString = [webView stringByEvaluatingJavaScriptFromString:@"docment.title"];
+    self.navigationTitle.title = urlTitleString;
+    
 }
 
 - (IBAction)onStopLoadingButtonPressed:(id)sender {

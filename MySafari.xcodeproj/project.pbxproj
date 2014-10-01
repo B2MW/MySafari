@@ -412,6 +412,7 @@
 				4C1057EB19DC7C5000DB04A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C1057EC19DC7C5000DB04A4 /* Build configuration list for PBXNativeTarget "MySafariTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +421,7 @@
 				4C1057EE19DC7C5000DB04A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

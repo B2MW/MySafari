@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,17 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wb2-cB-JML">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WdH-XV-Vg8">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="gVk-dW-ucS"/>
+                                </items>
+                            </navigationBar>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zp0-rY-AJH">
+                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="33" width="368" height="30"/>
+                                    <rect key="frame" x="0.0" y="66" width="400" height="461"/>
                                 </variation>
                                 <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="1ic-ZC-XY1"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="cp3-hu-F2o"/>
                                 </connections>
-                            </textField>
+                            </webView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ool-k8-9D4" userLabel="Button View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
@@ -36,7 +42,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="133" y="36" width="30" height="30"/>
+                                            <rect key="frame" x="110" y="0.0" width="30" height="30"/>
                                         </variation>
                                         <connections>
                                             <action selector="onBackButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Zmk-EB-XJF"/>
@@ -48,34 +54,10 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="228" y="36" width="30" height="30"/>
+                                            <rect key="frame" x="246" y="0.0" width="30" height="30"/>
                                         </variation>
                                         <connections>
                                             <action selector="onForwardButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="diQ-ja-dzT"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clZ-Pj-4fk">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="Stop">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="306" y="54" width="33" height="30"/>
-                                        </variation>
-                                        <connections>
-                                            <action selector="onStopLoadingButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="J0D-Xp-RjA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlf-hu-vV6">
-                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                        <state key="normal" title="Refresh">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="31" y="36" width="53" height="30"/>
-                                        </variation>
-                                        <connections>
-                                            <action selector="onReloadButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Mgi-2a-0a0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-N4-vUJ">
@@ -84,10 +66,34 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="185" y="54" width="30" height="30"/>
+                                            <rect key="frame" x="175" y="0.0" width="30" height="30"/>
                                         </variation>
                                         <connections>
                                             <action selector="showAlertView:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="J8W-qz-1Yc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlf-hu-vV6">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Refresh">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="34" y="0.0" width="53" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onReloadButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Mgi-2a-0a0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clZ-Pj-4fk">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Stop">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="284" y="0.0" width="33" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onStopLoadingButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="J0D-Xp-RjA"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -96,50 +102,80 @@
                                     <mask key="subviews">
                                         <exclude reference="4Ej-72-5Z4"/>
                                         <exclude reference="22J-Ba-xnH"/>
-                                        <exclude reference="clZ-Pj-4fk"/>
-                                        <exclude reference="Rlf-hu-vV6"/>
                                         <exclude reference="hMe-N4-vUJ"/>
+                                        <exclude reference="Rlf-hu-vV6"/>
+                                        <exclude reference="clZ-Pj-4fk"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="479" width="400" height="101"/>
+                                    <rect key="frame" x="0.0" y="535" width="400" height="65"/>
                                     <mask key="subviews">
                                         <include reference="4Ej-72-5Z4"/>
                                         <include reference="22J-Ba-xnH"/>
-                                        <include reference="clZ-Pj-4fk"/>
-                                        <include reference="Rlf-hu-vV6"/>
                                         <include reference="hMe-N4-vUJ"/>
+                                        <include reference="Rlf-hu-vV6"/>
+                                        <include reference="clZ-Pj-4fk"/>
                                     </mask>
                                 </variation>
                             </view>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zp0-rY-AJH">
-                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="64" y="109" width="273" height="296"/>
-                                </variation>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wb2-cB-JML">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
                                 <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="cp3-hu-F2o"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="1ic-ZC-XY1"/>
                                 </connections>
-                            </webView>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wb2-cB-JML" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="CQG-Mt-p6p"/>
+                            <constraint firstItem="WdH-XV-Vg8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="YIW-jn-jBn"/>
+                            <constraint firstItem="Wb2-cB-JML" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="dLd-MA-pA5"/>
+                            <constraint firstItem="Wb2-cB-JML" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="ib5-bG-nAC">
+                                <variation key="widthClass=compact" constant="46"/>
+                            </constraint>
+                            <constraint firstAttribute="trailingMargin" secondItem="WdH-XV-Vg8" secondAttribute="trailing" constant="-16" id="oHA-Db-iPg"/>
+                            <constraint firstAttribute="centerX" secondItem="Wb2-cB-JML" secondAttribute="centerX" id="qrq-ef-pcs"/>
+                            <constraint firstItem="WdH-XV-Vg8" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="2" id="ww6-bd-yu5"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="Wb2-cB-JML"/>
+                                <exclude reference="WdH-XV-Vg8"/>
                                 <exclude reference="ool-k8-9D4"/>
+                                <exclude reference="Wb2-cB-JML"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="YIW-jn-jBn"/>
+                                <exclude reference="oHA-Db-iPg"/>
+                                <exclude reference="ww6-bd-yu5"/>
+                                <exclude reference="CQG-Mt-p6p"/>
+                                <exclude reference="dLd-MA-pA5"/>
+                                <exclude reference="ib5-bG-nAC"/>
+                                <exclude reference="qrq-ef-pcs"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="Wb2-cB-JML"/>
+                                <include reference="WdH-XV-Vg8"/>
                                 <include reference="ool-k8-9D4"/>
+                                <include reference="Wb2-cB-JML"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="YIW-jn-jBn"/>
+                                <include reference="oHA-Db-iPg"/>
+                                <include reference="ww6-bd-yu5"/>
+                                <include reference="CQG-Mt-p6p"/>
+                                <include reference="dLd-MA-pA5"/>
+                                <include reference="ib5-bG-nAC"/>
+                                <include reference="qrq-ef-pcs"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="4Ej-72-5Z4" id="awn-af-cjx"/>
                         <outlet property="forwardButton" destination="22J-Ba-xnH" id="PNk-7s-W1b"/>
+                        <outlet property="navigationTitle" destination="gVk-dW-ucS" id="I1X-JL-8Za"/>
                         <outlet property="urlTextField" destination="Wb2-cB-JML" id="o76-2c-Egn"/>
                         <outlet property="webView" destination="zp0-rY-AJH" id="KqU-mg-rdd"/>
                     </connections>
