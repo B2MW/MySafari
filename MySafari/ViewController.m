@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate>
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 @property IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
@@ -42,17 +42,31 @@
     }
 }
 
+//- (void) makeURLString: (NSString *)urlString {
+//    NSURL *url = [NSURL URLWithString:urlString];
+//    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+//    [self.webView loadRequest:urlRequest];
+//}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSString *urlString = self.urlTextField.text;
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:urlRequest];
-    
+        NSURL *url = [NSURL URLWithString:textField.text];
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:urlRequest];
     if ([self.urlTextField.text containsString:@"http://"]) {
         return YES;
     } else {
-        return NO;
+        NSString *firstHalfOfURL = [self.urlTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSString *http = @"http://";
+        self.urlTextField.text = [http stringByAppendingString:firstHalfOfURL];
+        return YES;
     }
+}
+
+- (IBAction)showAlertView:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] init];
+    alert.title = @"Coming Soon";
+    [alert addButtonWithTitle:@"Close"];
+    [alert show];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
@@ -61,7 +75,9 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    self.urlTextField.text = self.webView.request.URL.absoluteString;
 }
+
 - (IBAction)onStopLoadingButtonPressed:(id)sender {
     [self.webView stopLoading];
 }
