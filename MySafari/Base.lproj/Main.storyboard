@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,25 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zp0-rY-AJH">
-                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="20" width="400" height="459"/>
-                                </variation>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="9l9-fG-Hki"/>
-                                </connections>
-                            </webView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wb2-cB-JML">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="42" y="33" width="288" height="30"/>
+                                    <rect key="frame" x="16" y="33" width="368" height="30"/>
                                 </variation>
                                 <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="srj-s3-QBn"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="1ic-ZC-XY1"/>
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ool-k8-9D4" userLabel="Button View">
@@ -123,33 +112,28 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zp0-rY-AJH">
+                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="64" y="109" width="273" height="296"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="cp3-hu-F2o"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="zp0-rY-AJH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="UDs-To-paU"/>
-                            <constraint firstItem="zp0-rY-AJH" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="YQ7-Uz-eUr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="zp0-rY-AJH" secondAttribute="trailing" constant="-16" id="bfl-fg-bgF"/>
-                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Wb2-cB-JML"/>
                                 <exclude reference="ool-k8-9D4"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="UDs-To-paU"/>
-                                <exclude reference="YQ7-Uz-eUr"/>
-                                <exclude reference="bfl-fg-bgF"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Wb2-cB-JML"/>
                                 <include reference="ool-k8-9D4"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="UDs-To-paU"/>
-                                <include reference="YQ7-Uz-eUr"/>
-                                <include reference="bfl-fg-bgF"/>
                             </mask>
                         </variation>
                     </view>

@@ -42,24 +42,22 @@
     }
 }
 
-//- (void) makeURLString: (NSString *)urlString {
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-//    [self.webView loadRequest:urlRequest];
-//}
+- (void) loadPage: (NSString *)urlString {
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:urlRequest];
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-        NSURL *url = [NSURL URLWithString:textField.text];
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-        [self.webView loadRequest:urlRequest];
-    if ([self.urlTextField.text containsString:@"http://"]) {
-        return YES;
-    } else {
-        NSString *firstHalfOfURL = [self.urlTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+    if (![textField.text containsString:@"http://"]) {
+        NSString *firstHalfOfURL = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSString *http = @"http://";
         self.urlTextField.text = [http stringByAppendingString:firstHalfOfURL];
-        return YES;
     }
+
+    [self loadPage:self.urlTextField.text];
+    return YES;
 }
 
 - (IBAction)showAlertView:(id)sender {
